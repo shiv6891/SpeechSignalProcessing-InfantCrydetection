@@ -2,7 +2,7 @@
 This repo contains the scripts for:
 
 <ul>
-  <li>Finamental signal processing tasks.</li>
-  <li>Cru caused classification.</li>
-  <li>Pitch analysis using Autocorrelation, LP Analysis, and Short-term Fourier Transform, and ZFF.</li>
+  <li>Fundamental signal processing tasks.</li>
+  <li>Cry-cause classification.</li>
+  <li>Pitch analysis using: Autocorrelation, LP Analysis, Short-term Fourier Transform (STFT), and Sero Frequency Filtering (ZFF).</li>
 </ul>

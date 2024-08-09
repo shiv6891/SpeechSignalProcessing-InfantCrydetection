@@ -1,0 +1,11 @@
+%close all;
+%clear all;
+[x1, fs] = audioread('/idiap/home/ssharma/Shivam/Workstation/Work/Datasetup/ZFFOutput2/noSil/preProc2/Pain/S01_F_02d_sn1_c01_09_Pain_1.wav');
+%[x1, fs] = audioread('/idiap/home/ssharma/Shivam/Workstation/Work/Datasetup/ZFFOutput2/noSil/preProc2/Pain/S06_M_24m_sn1_c01_23_Pain_1.wav');
+figure;
+specgram(x1, 512, 16000, hamming(400), []);
+[x2, fs] = audioread('/idiap/home/ssharma/Shivam/Workstation/Work/Datasetup/wav2/noSil/preProc2/Pain/S01_F_02d_sn1_c01_09_Pain_1.wav');
+[x2, fs] = audioread('/idiap/home/ssharma/Shivam/Workstation/Work/Datasetup/wav2/noSil/sigFiles/FilSig_Cry_CryNetCAS_3Pole/Pain/S01_F_02d_sn1_c01_09_Pain_1.wav');
+figure;
+specgram(x2, 512, 16000, hamming(400), []);
+saveas(spec,'spec_S01_F_02d_sn1_c01_09_Pain_1.jpg')

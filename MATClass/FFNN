@@ -1,0 +1,10 @@
+input = double(wav_feat_var_mini(:,1:4000));
+tar = wav_feat_var_mini(:,4001);
+
+
+ind = tar;
+ind = ind+1;
+indT = double(ind');
+vec = ind2vec(indT);
+target_var = full(vec); 
+Tar = target_var';

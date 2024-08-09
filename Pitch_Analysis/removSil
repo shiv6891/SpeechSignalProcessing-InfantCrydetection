@@ -1,0 +1,54 @@
+frmDir = '/idiap/home/ssharma/Shivam/Workstation/Work/Datasetup/wav2/wSil/Pain';
+toDir = '/idiap/home/ssharma/Shivam/Workstation/Work/Datasetup/wav2/noSil/Pain';
+
+system('ls -l /idiap/home/ssharma/Shivam/Workstation/Work/Datasetup/wav2/wSil/Pain/ > Pain.txt');
+fileID = fopen('Pain.txt','r');
+A = fscanf(fileID,'%s\n');
+A1 = strsplit(A, '.wav');
+n = size(list, 1);
+wavlist = strsplit(list(1:end,:),'/');
+for i = 1:n
+    display(strcat(strcat(strcat('Processing File Number:', num2str(i)), ', Name:'), list(i,:)));
+    wavFile = strsplit(list(1:end,:),'/')(end);
+end
+
+
+function cryProcess()
+[x, fs] = audioread('S17_M_22m_sn1_c01_06_Anxt.wav');
+N = 0.030*fs;
+L = length(x);
+x1 = buffer(x, N);
+% Calculate energy from each frame
+[r,c] = size(x1);
+en = zeros(1, c);
+silIn = zeros(1, c);
+for i = 1:c
+    en(i) = sum(x1(:,i).^2);
+    if en(i) < 1e-04
+        silIn(i) = true;
+    end
+end
+
+
+
+xaxis = [floor(N/2):N:floor(N/2) + (c-1)*N + 2]/fs; % In seconds.
+
+figure
+subplot(2,1,1)
+plot([1:length(x)]/fs, x);hold on
+plot(xaxis, silIn, 'r', 'linewidth', 2)
+subplot(2,1,2)
+plot(xaxis, en)
+
+voiceIn = ~silIn;
+frInd = find(voiceIn);  % Frame indices having voiced regions
+x2 = x1(:,frInd);
+
+x3 = x2(:);
+xtSam = rem(L,N);
+x4 = x3(1: end-(N-xtSam));
+
+figure
+plot([1:length(x4)]/fs, x4)
+xlim([1/fs length(x4)/fs]);
+end

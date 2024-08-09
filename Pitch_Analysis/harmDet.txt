@@ -1,0 +1,33 @@
+F1=444.43, F2=221.14, F3=153.5, F4=222.885;
+ind = [1, 2, 3, 4, 5, 6, 7];
+Peaks = [117, 398, 820, 1289, 1758, 2180, 2648];
+estF1 = ind.*F1;
+estF2 = ind.*F2;
+estF3 = ind.*F3;
+estF4 = ind.*F4;
+
+
+dF1 = abs(estF1-Peaks);
+dF2 = abs(estF2-Peaks);
+dF3 = abs(estF3-Peaks);
+dF4 = abs(estF4-Peaks);
+
+
+
+dF1
+dF2
+dF3
+dF1
+
+*******************************************
+Raw Handpicked
+F1 = 125; F2 = 411;
+
+(Wavesurfer Statistics)
+F1 = 117; F2 = 398;
+ind = [1, 2, 3, 4, 5, 6, 7];
+Peaks = [117, 398, 820, 1289, 1758, 2180, 2648];
+estF1 = ind.*F1;
+estF2 = ind.*F2;
+dF1 = abs(estF1-Peaks)
+dF2 = abs(estF2-Peaks)
